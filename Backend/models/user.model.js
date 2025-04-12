@@ -14,11 +14,11 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlenth: 4,
+        minlenth: 6,
     },
-    Profile: {
-        type: Number,
-        default : ""
+    profile: {
+        type: String,
+        default : "",
     }
 })
 
