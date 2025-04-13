@@ -1,6 +1,7 @@
 import express from "express";
 import authroutes from "./Routes/authroutes.js";
 import messageroutes from "./Routes/messageroutes.js";
+import userRoutes from "./Routes/useRoutes.js";
 import dotenv from "dotenv";
 import connectMongoBd from "./MongoDb/Connect.js";
 import cookieParser from "cookie-parser";
@@ -17,6 +18,7 @@ app.use(cookieParser());
 // Routes
 app.use("/api/auth/", authroutes);
 app.use("/api/message/", messageroutes);
+app.use("/api/user", userRoutes);
 
 // Start the server
 app.listen(PORT, async () => {

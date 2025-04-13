@@ -1,18 +1,35 @@
 import jwt from 'jsonwebtoken'
+import User from '../../models/user.model.js';
 
-export const protectroute = (req, res, next) => {
+export const protectroute = async (req, res, next) => {
     try {
         const token = req.cookies.jwt;
 
         if (!token) {
-            return console.log("erorr token not found", error);
+            return res.status(401).json({ error: "Unauthorized" });
         }
 
-        const decoded =jwt.verify(token, process.env.JWT_SECRET)
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+        if (!decoded) {
+            return res.status(500).json({ error: "invalid token" })
+        }
+
+        const user = await User.findById(decoded.userId).select("-password");
+
+        if (!user) {
+            return res.status(500).json({ error: "user not found" })
+        }
+
+        req.user = { _id: decoded.userId };
+
+
+        next();
 
     } catch (error) {
-        console.log("erorr in protect middleware", error);
-        res.status(500).json({error:"internal server"})
+        console.error("Error in sendmessage controller:", error.message);
+        res.status(500).json({ error: "Internal server error" });
     }
 }  
+
+export default protectroute
