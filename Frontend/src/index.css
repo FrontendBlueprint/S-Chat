@@ -1,17 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 @import "tailwindcss";
 
 @theme{
-  --color-primary: #051220;
-  --color-secondary: #4865E9;
+  --color-primary: #161F2F;
+  --color-secondary: #1E2939;
 }
 
 * {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
 }
 
 html,body{
   width: 100%;
   height: 100%;
+  font-family: "Comic Neue", cursive;
+  background-color: var(--color-primary);
+  overflow-x: hidden;
 }

@@ -1,9 +1,23 @@
-import React from 'react'
+import Message from "./Message";
 
-function Messages() {
+const Messages = () => {
   return (
-    <div>Messages</div>
-  )
-}
-
-export default Messages
+    <div className="px-4 flex-1 overflow-y-auto">
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+      <Message />
+    </div>
+  );
+};
+export default Messages;
